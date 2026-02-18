@@ -126,9 +126,13 @@ pvesm status         # Validité des stockages Proxmox
 
 8.2. Crash Test (Basculement HA)
 
-Simulation d'une perte de nœud brutale (Kernel Panic déclenché via echo c > /proc/sysrq-trigger).
+Simulation d'une perte de nœud brutale -> Kernel Panic déclenché via : 
 
-    Résultat : Le Watchdog matériel isole le nœud défaillant. Le gestionnaire HA détecte l'anomalie, attend l'expiration du verrou de sécurité, et redémarre automatiquement la machine virtuelle sur un nœud sain en moins de 2 minutes. Validation totale du PoC.
+```bash
+echo c > /proc/sysrq-trigger
+```
+
+Le Watchdog matériel isole le nœud défaillant. Le gestionnaire HA détecte l'anomalie, attend l'expiration du verrou de sécurité, et redémarre automatiquement la machine virtuelle sur un nœud sain en moins de 2 minutes. Validation totale du PoC.
 
 ## 9. Schéma d'Architecture Logique
 
