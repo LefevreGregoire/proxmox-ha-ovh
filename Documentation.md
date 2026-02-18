@@ -56,11 +56,11 @@ iface vmbr1 inet static
     mtu 9000
 ```
 
-5. Création du Cluster Proxmox
+## 5. Création du Cluster Proxmox
 
 Création du cluster (cluster-pve-ha) via l'interface GUI en utilisant exclusivement les adresses IP privées (Réseau 10.0.0.0/24) pour le Cluster Network (Link 0) afin de garantir la stabilité de Corosync face aux perturbations du réseau public.
 
-6. Implémentation du Stockage Ceph (Hybride RAID5/NVMe)
+## 6. Implémentation du Stockage Ceph (Hybride RAID5/NVMe)
 
 6.1. Initialisation Ceph
 
@@ -93,7 +93,7 @@ ceph auth get client.bootstrap-osd > /etc/pve/priv/ceph.client.bootstrap-osd.key
 Ceph-volume nécessitant une couche logique pour exploiter un volume RAID logiciel, un espace LVM est créé. Le second disque NVMe (nvme1n1) y est rattaché en tant que Block DB pour absorber les écritures aléatoires et compenser la latence du RAID 5 HDD :
 Bash
 
-# Création de la couche LVM sur le RAID 5
+Création de la couche LVM sur le RAID 5 :
 
 ```bash
 pvcreate /dev/md0
@@ -108,7 +108,7 @@ ceph-volume lvm create --data ceph-raid/osd --block.db /dev/nvme1n1
 
 Création du pool Stockage-HA (Size: 3, Min Size: 2, PG Autoscale: On) et activation de l'option "Add as Storage" dans Proxmox.
 
-7. Mise en place de la Haute Disponibilité (HA)
+## 7. Mise en place de la Haute Disponibilité (HA)
 
     Création du Groupe HA : Ajout des 3 nœuds dans un groupe défini (Cluster-Prod).
 
@@ -130,7 +130,7 @@ Simulation d'une perte de nœud brutale (Kernel Panic déclenché via echo c > /
 
     Résultat : Le Watchdog matériel isole le nœud défaillant. Le gestionnaire HA détecte l'anomalie, attend l'expiration du verrou de sécurité, et redémarre automatiquement la machine virtuelle sur un nœud sain en moins de 2 minutes. Validation totale du PoC.
 
-9. Schéma d'Architecture Logique
+## 9. Schéma d'Architecture Logique
 
 ```mermaid
 flowchart TD
