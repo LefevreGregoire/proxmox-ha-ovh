@@ -1,5 +1,13 @@
 # Cluster Proxmox Haute Disponibilité & Ceph via OVHcloud
 
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://www.proxmox.com/"><img src="https://img.shields.io/badge/Proxmox_VE-8.x-E57000?logo=proxmox&logoColor=white" alt="Proxmox VE"></a>
+  <a href="https://ceph.com/"><img src="https://img.shields.io/badge/Ceph-Storage-EF3E36?logo=ceph&logoColor=white" alt="Ceph"></a>
+  <a href="https://www.debian.org/"><img src="https://img.shields.io/badge/Debian-12_Bookworm-A81D33?logo=debian&logoColor=white" alt="Debian"></a>
+  <a href="https://www.ovhcloud.com/"><img src="https://img.shields.io/badge/OVHcloud-Bare_Metal-012169?logo=ovh&logoColor=white" alt="OVHcloud"></a>
+</p>
+
 Ce projet a pour objectif de déployer un cluster Proxmox VE hautement disponible (HA) sur des serveurs dédiés OVHcloud, en utilisant Ceph pour le stockage distribué répliqué, avec une architecture hybride NVMe/HDD.
 
 ## Points Clés du Projet
